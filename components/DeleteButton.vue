@@ -1,0 +1,11 @@
+<template>
+  <button
+    class="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
+  >
+    Delete
+  </button>
+</template>
+
+<script lang="ts" setup></script>
+
+<style></style>
