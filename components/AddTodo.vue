@@ -1,11 +1,11 @@
 <template>
-  <form class="flex gap-2">
+  <form class="flex gap-2" @submit="handleSubmit">
     <input
       type="text"
       class="flex-1 rounded border border-gray-300 p-2 text-black shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       placeholder="Add new todo"
-      value="{title}"
       name="title"
+      v-model.trim="title"
     />
     <button
       type="submit"
@@ -15,3 +15,19 @@
     </button>
   </form>
 </template>
+
+<script lang="ts" setup>
+const emit = defineEmits(["onAdd"]);
+const title = ref("");
+
+async function handleSubmit(e: Event) {
+  e.preventDefault();
+  if (!title.value || title.value === "") return;
+  await $fetch("/api/todo", {
+    method: "POST",
+    body: { title: title.value },
+  });
+  title.value = "";
+  emit("onAdd");
+}
+</script>
