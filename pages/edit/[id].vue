@@ -27,17 +27,19 @@ import type { Todo } from "~/lib/definitions";
 const route = useRoute();
 const id = route.params.id;
 const title = ref("");
+const completed = ref(false);
 
 async function fetchTodo() {
   const data = await $fetch<Todo>(`/api/todo/${id}`);
   title.value = data.title;
+  completed.value = data.completed;
 }
 
 async function handleSubmit(e: Event) {
   e.preventDefault();
   await $fetch("/api/todo", {
     method: "PUT",
-    body: { id: id, title: title.value },
+    body: { id: id, title: title.value, completed: completed.value },
   });
   await navigateTo("/");
 }
