@@ -13,7 +13,11 @@
       />
       <button
         type="submit"
-        class="rounded bg-blue-500 px-4 py-2 text-white shadow hover:bg-blue-700"
+        :class="{
+          'rounded px-4 py-2 text-white shadow': true,
+          'bg-blue-500 hover:bg-blue-700': isFormValid,
+          'cursor-not-allowed bg-gray-500': !isFormValid,
+        }"
       >
         Save
       </button>
@@ -23,10 +27,11 @@
 
 <script lang="ts" setup>
 import type { Todo } from "~/lib/definitions";
+import { useInput } from "~/composables/titleInput";
 
 const route = useRoute();
 const id = route.params.id;
-const title = ref("");
+const { title, isFormValid } = useInput();
 const completed = ref(false);
 
 async function fetchTodo() {
