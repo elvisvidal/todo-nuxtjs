@@ -1,5 +1,5 @@
 <template>
-  <label class="inline-flex cursor-pointer items-center">
+  <label class="toggle inline-flex cursor-pointer items-center">
     <input
       @change="handleToggle"
       type="checkbox"

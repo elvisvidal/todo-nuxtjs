@@ -1,9 +1,12 @@
 <template>
-  <div class="mt-4">
+  <div class="todo-list mt-4">
     <div
       v-for="todo in todos"
       :key="todo.id"
-      class="flex items-center gap-2 border-b border-gray-200 p-2"
+      class="todo-item flex items-center gap-2 border-b border-gray-200 p-2"
+      :class="{
+        completed: todo.completed,
+      }"
     >
       <p class="flex-1" :class="{ 'line-through': todo.completed }">
         {{ todo.title }}
