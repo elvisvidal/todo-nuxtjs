@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     "~/assets/css/tailwind.css", // Ensuring Tailwind CSS is loaded
     "~/assets/css/main.css",
   ],
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/test-utils/module"],
   tailwindcss: {
     configPath: "tailwind.config.js",
     exposeConfig: { alias: "#tailwind-config", level: 2 },
