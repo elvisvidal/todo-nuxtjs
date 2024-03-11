@@ -8,7 +8,8 @@
 </template>
 
 <script lang="ts" setup>
-const emit = defineEmits(["onDelete"]);
+const emitEvent = inject<any>("emitEvent");
+const eventKey = "on-delete";
 const props = defineProps({
   todoId: {
     type: Number,
@@ -22,6 +23,6 @@ async function handleDelete(e: Event) {
     method: "DELETE",
     body: { id: props.todoId },
   });
-  emit("onDelete");
+  emitEvent(eventKey, { deleted: true });
 }
 </script>

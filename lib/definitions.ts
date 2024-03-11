@@ -3,3 +3,7 @@ export type Todo = {
   title: string;
   completed: boolean;
 };
+
+export type Events = {
+  [key: string]: (data: any) => void;
+};

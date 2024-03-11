@@ -10,7 +10,7 @@
       </p>
       <ToggleButton :todo="todo" @on-completed="handleCompleted(todo.id)" />
       <EditLink :todoId="todo.id" />
-      <DeleteButton :todoId="todo.id" @on-delete="emit('onDelete')" />
+      <DeleteButton :todoId="todo.id" />
     </div>
   </div>
 </template>
@@ -21,7 +21,6 @@ import DeleteButton from "./DeleteButton.vue";
 import ToggleButton from "./ToggleButton.vue";
 import type { Todo } from "~/lib/definitions";
 
-const emit = defineEmits(["onDelete"]);
 const props = defineProps({
   todos: {
     type: Array as PropType<Todo[]>,
