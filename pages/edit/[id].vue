@@ -35,18 +35,35 @@ const { title, isFormValid } = useInput();
 const completed = ref(false);
 
 async function fetchTodo() {
-  const data = await $fetch<Todo>(`/api/todo/${id}`);
-  title.value = data.title;
-  completed.value = data.completed;
+  try {
+    const data = await $fetch<Todo>(`/api/todo/${id}`);
+    title.value = data.title;
+    completed.value = data.completed;
+  } catch (error) {
+    const errorObj = {
+      type: "error",
+      message: "Failed to load todo. Please try again later.",
+    };
+    alert(errorObj.message);
+  }
 }
 
 async function handleSubmit(e: Event) {
   e.preventDefault();
-  await $fetch("/api/todo", {
-    method: "PUT",
-    body: { id: id, title: title.value, completed: completed.value },
-  });
-  await navigateTo("/");
+
+  try {
+    await $fetch("/api/todo", {
+      method: "PUT",
+      body: { id: id, title: title.value, completed: completed.value },
+    });
+    await navigateTo("/");
+  } catch (error) {
+    const errorObj = {
+      type: "error",
+      message: "Failed to edit todo. Please try again later.",
+    };
+    alert(errorObj.message);
+  }
 }
 
 onMounted(() => {

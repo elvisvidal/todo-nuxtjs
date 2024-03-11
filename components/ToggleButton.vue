@@ -26,14 +26,23 @@ const completed = ref(props.todo.completed);
 
 async function handleToggle(e: Event) {
   e.preventDefault();
-  await $fetch("/api/todo", {
-    method: "PUT",
-    body: {
-      id: props.todo.id,
-      title: props.todo.title,
-      completed: completed.value,
-    },
-  });
-  emit("onCompleted");
+
+  try {
+    await $fetch("/api/todo", {
+      method: "PUT",
+      body: {
+        id: props.todo.id,
+        title: props.todo.title,
+        completed: completed.value,
+      },
+    });
+    emit("onCompleted");
+  } catch (error) {
+    const errorObj = {
+      type: "error",
+      message: "Failed to complete todo. Please try again later.",
+    };
+    alert(errorObj.message);
+  }
 }
 </script>

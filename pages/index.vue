@@ -31,8 +31,16 @@ onEvent("on-delete", (data) => {
 });
 
 async function fetchTodos() {
-  const data = await $fetch<Todo[]>("/api/todos");
-  todos.value = data;
+  try {
+    const data = await $fetch<Todo[]>("/api/todos");
+    todos.value = data;
+  } catch (error) {
+    const errorObj = {
+      type: "error",
+      message: "Failed to load todos. Please try again later.",
+    };
+    alert(errorObj.message);
+  }
 }
 
 onMounted(() => {

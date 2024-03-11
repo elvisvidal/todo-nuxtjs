@@ -19,10 +19,19 @@ const props = defineProps({
 
 async function handleDelete(e: Event) {
   e.preventDefault();
-  await $fetch("/api/todo", {
-    method: "DELETE",
-    body: { id: props.todoId },
-  });
-  emitEvent(eventKey, { deleted: true });
+
+  try {
+    await $fetch("/api/todo", {
+      method: "DELETE",
+      body: { id: props.todoId },
+    });
+    emitEvent(eventKey, { deleted: true });
+  } catch (error) {
+    const errorObj = {
+      type: "error",
+      message: "Failed to delete todo. Please try again later.",
+    };
+    alert(errorObj.message);
+  }
 }
 </script>

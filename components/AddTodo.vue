@@ -28,11 +28,20 @@ const { title, isFormValid } = useInput();
 async function handleSubmit(e: Event) {
   e.preventDefault();
   if (!title.value || title.value === "") return;
-  await $fetch("/api/todo", {
-    method: "POST",
-    body: { title: title.value },
-  });
-  title.value = "";
-  emit("onAdd");
+
+  try {
+    await $fetch("/api/todo", {
+      method: "POST",
+      body: { title: title.value },
+    });
+    title.value = "";
+    emit("onAdd");
+  } catch (error) {
+    const errorObj = {
+      type: "error",
+      message: "Failed to add todo. Please try again later.",
+    };
+    alert(errorObj.message);
+  }
 }
 </script>
