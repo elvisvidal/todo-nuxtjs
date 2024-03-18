@@ -5,7 +5,7 @@
     </h1>
     <form class="flex gap-2" @submit="handleSubmit">
       <input
-        class="flex-1 rounded border border-gray-300 p-2 text-black shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="flex-1 rounded border border-gray-300 p-2 text-black shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-900"
         id="title"
         type="text"
         v-model="title"
@@ -15,7 +15,7 @@
         type="submit"
         :class="{
           'rounded px-4 py-2 text-white shadow': true,
-          'bg-blue-500 hover:bg-blue-700': isFormValid,
+          'bg-blue-900 hover:bg-blue-700': isFormValid,
           'cursor-not-allowed bg-gray-500': !isFormValid,
         }"
       >

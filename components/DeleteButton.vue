@@ -1,7 +1,7 @@
 <template>
   <button
     @click="handleDelete"
-    class="delete-button rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
+    class="delete-button rounded bg-red-900 px-4 py-2 font-bold text-white hover:bg-red-700"
   >
     Delete
   </button>
