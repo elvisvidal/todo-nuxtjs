@@ -48,6 +48,7 @@ export default defineNuxtConfig({
     manifest: {
       name: "Todo App",
       short_name: "Todo",
+      description: "Simple Todo App",
       theme_color: "#000000",
       icons: [
         {
