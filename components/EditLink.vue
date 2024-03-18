@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    class="cursor-pointer rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+    class="cursor-pointer rounded bg-blue-900 px-4 py-2 font-bold text-white hover:bg-blue-700"
     :to="`edit/${todoId}`"
   >
     Edit
