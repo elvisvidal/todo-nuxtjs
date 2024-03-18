@@ -19,6 +19,7 @@
   "devDependencies": {
     "@nuxt/test-utils": "^3.11.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
+    "@vite-pwa/nuxt": "^0.6.0",
     "@vue/test-utils": "^2.4.4",
     "cypress": "^13.6.6",
     "happy-dom": "^13.7.3",
